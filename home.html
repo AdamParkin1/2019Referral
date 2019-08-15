@@ -11,14 +11,44 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/treasure.js"></script>
+        
+        <style>
+        table { width: 300px; height: 300px};
+        td { width: 90px; height: 90px; }
+        table, td {border: 1px solid black;}
+        </style>  
     </head>
+    
+    
+    
     <body>
         
-        <h1 class="header">My Website</h1>
+        <h1 class="header">Welcome to my website!</h1>
         <div class ="navBar">
             <a href="home.html">Home</a>
-            <a href="aboutme.html">About me</a>
-            <a href="game">Guess the square</a> <!-- make an error here or something to fix-->
+                <a href="aboutme.html">About me</a>
+        </div>
+        <h1> Try this treasure hunt!</h1>
+        <div>
+           <table id="treasureGame" >
+                <tr>
+                    <td id="topLeft" ></td>
+                    <td id="topMiddle" ></td>
+                    <td id="topRight" ></td>
+                </tr>
+                <tr>
+                    <td id="middleLeft" ></td>
+                    <td id="middleMiddle" ></td>
+                    <td id="middleRight" ></td>
+                </tr>
+                <tr>
+                    <td id="bottomLeft" ></td>
+                    <td id="bottomMiddle" ></td>
+                    <td id="bottomRight" ></td>
+                </tr>
+            </table> 
         </div>
         
         <div class="footer">

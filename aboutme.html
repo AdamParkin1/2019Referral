@@ -6,10 +6,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="mainCSS.css">
         <title>About me</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin=""/>
     </head>
     <body>
         
@@ -17,10 +19,32 @@ and open the template in the editor.
         <div class ="navBar">
             <a href="home.html">Home</a>
             <a href="aboutme.html">About me</a>
-            <a href="game">Guess the square</a>
         </div>
         
         <h1> Hi! I'm Adam and this is my website. :) </h1>
-        <h1> I am a computer science student at Plymouth university and an aviation enthusiast. </h1>
+        <p> I am currently a student at the University of Plymouth studying computer science and enjoy the course so far! <br>
+            In my spare time I enjoy playing video games with friends and am a huge aviation enthusiast, especially military planes.</p>
+        
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" crossorigin=""></script>
+        
+        <div id="mapid" style="width: 600px; height: 400px; position: relative; outline: none;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"></div>
+        <script>
+            var mymap = L.map('mapid').setView([50.9028713,-3.4867978], 13);
+            
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiYWRhbXBhcmtpbjEiLCJhIjoiY2p6Ymk4d2VnMDE5dzNocDQzdjJkYXp3ZCJ9.EvhJ0NEVZjwpu_E6PvyZ_A'
+            }).addTo(mymap);
+
+            var marker = L.marker([50.9028713,-3.4867978]).addTo(mymap)
+            .bindPopup('This is Tiverton <br> I was born and grew up here')
+            .openPopup();
+        </script>
+        
+        <div class="footer">
+            <font size="2">Created by Adam Parkin.</font>   
+        </div>
     </body>
 </html>
