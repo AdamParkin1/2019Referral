@@ -1,20 +1,33 @@
-function checkWin($element)
+function checkWin($element, $treasureCell)
 {
-    var treasure = "topRight";
     var winner = false;
     
-    if ($element.attr('id') === treasure)
+    if ($element.attr('id') === $treasureCell)
     {
         winner = true;
     }
     return winner;
 }
 
+function createTreasure()
+{
+    var treasureList = [
+        "topLeft", "topMiddle", "topRight",
+        "middleLeft", "middleMiddle", "middleRight",
+        "bottomLeft", "bottomMiddle", "bottomRight"
+    ];
+    
+    var randomNum = Math.floor(Math.random()*8);
+    
+    return treasureList[randomNum]; // return the selected cell
+    } 
+
 $(document).ready(function(){
     
+  var treasureCell = createTreasure();
   $('td').click(function(){
      
-      if(checkWin($(this)))
+      if(checkWin($(this),treasureCell))
       {
           alert("Congratulations, you found the treasure!!");
       }

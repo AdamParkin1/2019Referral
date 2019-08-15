@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<head>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" type="text/css" href="mainCSS.css">
+        <title>Contact Me</title>
+        <style>
+            .chat {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #e0ffe5;
+            padding: 12px;
+            }
+            
+            .column {
+                float: left;
+                width: 20%;
+                padding: 15px;
+            }
+            .column2 {
+                float: left;
+                width: 50%;
+                padding-left: 25px;
+            }
+            .row:after {
+                content:"";
+                display:table;
+                clear:both;
+            }
+
+            @media (max-width:400px) {
+                .column{
+                    width:100%;
+                }
+        </style>
+        <meta charset="UTF-8">
+        
+    </head>
+    <body>
+        
+        <h1 class="header">Chat with me!</h1>
+        <div class ="navBar">
+            <a href="home.html">Home</a>
+            <a href="aboutme.html">About me</a>
+            <a href="chat.html">Chat with me</a>
+        </div>
+    <div class="row">       
+        <div class ="column2">
+        <div id ="chat" class="chat">
+
+        <div id="messages"> </div>
+        <textarea id="message" placeholder="Type here..." required></textarea>
+        
+        <button>Send Message</button> 
+
+        <script>
+            //create websocket
+            var socket = new WebSocket("ws://localhost:5001");
+            var message = document.getElementById('message');
+            
+            socket.onmessage = function(event)
+            {
+                console.log(event);
+                messages.innerHTML += event.data+"<br>";
+            }
+            
+            //sending message
+            document.querySelector('button').onclick = function(){
+                var text = document.getElementById('message').value;
+                socket.send(text);
+                //adding you infront the message when its from you.
+                messages.innerHTML += "You: " + text+"<br>";
+                message.value ="";
+            };
+        </script>
+        
+        </div>
+        
+        </div>
+    </div>    
+        <div class="footer">
+            <font size="2">Created by Adam Parkin.</font>   
+        </div>
+    </body>
