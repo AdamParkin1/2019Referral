@@ -9,6 +9,11 @@ function checkWin($element, $treasureCell)
     return winner;
 }
 
+function getRandomNumber($min, $max){
+    var randomNum = Math.floor((Math.random()*$max)+$min);
+    return randomNum;
+}
+
 function createTreasure()
 {
     var treasureList = [
@@ -17,10 +22,10 @@ function createTreasure()
         "bottomLeft", "bottomMiddle", "bottomRight"
     ];
     
-    var randomNum = Math.floor(Math.random()*8);
+    var randomNum = getRandomNumber(0,8);
     
     return treasureList[randomNum]; // return the selected cell
-    } 
+} 
 
 $(document).ready(function(){
     
